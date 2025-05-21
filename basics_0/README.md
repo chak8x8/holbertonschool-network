@@ -114,10 +114,15 @@ It is organized from the lowest level to the highest level:
 
 Keep in mind that the OSI model is a concept, it’s not even tangible. The OSI model doesn’t perform any functions in the networking process. It is a conceptual framework so we can better understand complex interactions that are happening. Most of the functionality in the OSI model exists in all communications systems.
 
+![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/6/4e6a0ad87a65d7054248.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20250521%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20250521T083548Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=68496ef6f783ac37c38a164f4c91a92f7767edf9aa0d37b0ffc4e9d083c17aad)
+
 In this project we will mainly focus on:
 
 -   The Transport layer and especially TCP/UDP
 -   On the Network layer with IP and ICMP
+
+The image bellow describes more concretely how you can relate to every level.
+![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2020/9/0fc96bd99faa7941b18bcae4c5f90c6acd11791d.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20250521%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20250521T083548Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=759f5827ca708a96d927352a7e7be9ed12bc81fbe640edf7665c700e668f7aaf)
 
 Questions:
 
@@ -141,6 +146,7 @@ How is the OSI model organized?
 
 ### 1. Types of network
 
+![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2020/9/4b995d4f8078b44afa968d68a98035d2bd7e8fac.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20250521%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20250521T083548Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=955d2da825196b7733e9d3785698b0548122aa18e5253e887343c4aef48468bc)
 LAN connect local devices together, WAN connects LANs together, and WANs are operating over the Internet.
 
 Questions:
@@ -171,6 +177,7 @@ What network do you use when you browse www.google.com from your smartphone (not
 
 ### 2. MAC and IP address
 
+![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2020/9/1e348ba3bcbb094b02922f821ffeb3d8c5438b7b.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20250521%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20250521T083548Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=11954cd100dc540a86bacf7f3fa750cb94d0fdcbb5dbae1990836566fae2f3a6)
 Questions:
 
 What is a MAC address?
@@ -193,6 +200,7 @@ What is an IP address?
 
 ### 3. UDP and TCP
 
+![](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2020/9/3d92e3c4a470f8ecf4c73db511fcbbadaa002e1c.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20250521%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20250521T083548Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=fb2cf12f9ba743c6f0ed629f668a1ad42f43cf8dced69a35dfb3b8fe29deeb4f)
 Questions:
 
 Which statement is correct for the TCP box:
@@ -275,6 +283,7 @@ sylvain@ubuntu$
 
 ### 5. Is the host on the network
 
+![](https://media.giphy.com/media/uDxkJAVSU7GY8/giphy.gif)
 The Internet Control Message Protocol (ICMP) is a protocol in the Internet protocol suite. It is used by network devices, to check if other network devices are available on the network. The command ping uses ICMP to make sure that a network device remains online or to troubleshoot issues on the network.
 
 Write a Bash script that pings an IP address passed as an argument.

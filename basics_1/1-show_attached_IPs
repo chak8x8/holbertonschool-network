@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Displays all active IPv4 IPs on the machine
+
+# Use ifconfig to list network interfaces
+# Filter for lines with "inet" (IPv4 addresses)
+# Extract the IP address (second column after "inet")
+ifconfig | grep "inet " | awk '{print $2}'| cut -d':' -f2

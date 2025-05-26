@@ -10,21 +10,16 @@ TEMP_HOSTS="/tmp/hosts.new"
 # Copy current /etc/hosts to temp file
 cp /etc/hosts "$TEMP_HOSTS"
 
-# Update localhost to 127.0.0.2
-if grep -q "localhost" "$TEMP_HOSTS"; then
-    sed 's/.*localhost/127.0.0.2 localhost/' "$TEMP_HOSTS" > "$TEMP_HOSTS.tmp"
-    mv "$TEMP_HOSTS.tmp" "$TEMP_HOSTS"
-else
-    echo "127.0.0.2 localhost" >> "$TEMP_HOSTS"
-fi
+# Remove existing localhost and facebook.com entries to avoid duplicates
+sed -i '/localhost/d' "$TEMP_HOSTS"
+sed -i '/facebook.com/d' "$TEMP_HOSTS"
 
-# Update facebook.com to 8.8.8.8
-if grep -q "facebook.com" "$TEMP_HOSTS"; then
-    sed 's/.*facebook.com/8.8.8.8 facebook.com/' "$TEMP_HOSTS" > "$TEMP_HOSTS.tmp"
-    mv "$TEMP_HOSTS.tmp" "$TEMP_HOSTS"
-else
-    echo "8.8.8.8 facebook.com" >> "$TEMP_HOSTS"
-fi
+# Add new entries
+echo "127.0.0.2 localhost" >> "$TEMP_HOSTS"
+echo "8.8.8.8 facebook.com" >> "$TEMP_HOSTS"
 
-# Replace /etc/hosts with the updated file
-sudo mv "$TEMP_HOSTS" /etc/hosts
+# Update /etc/hosts with the new content
+sudo cat "$TEMP_HOSTS" | sudo tee /etc/hosts > /dev/null
+
+# Clean up temp file
+rm "$TEMP_HOSTS"

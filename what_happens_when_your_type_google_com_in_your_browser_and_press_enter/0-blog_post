@@ -1,0 +1,77 @@
+# What Happens When You Type https://www.google.com in Your Browser and Press Enter
+
+As a Full-Stack Software Engineer, understanding the journey of a web request is crucial. When you type `https://www.google.com` in your browser and press Enter, a complex sequence of events unfolds across networks, servers, and security layers. Let’s break it down step by step, covering the key components: DNS request, TCP/IP, Firewall, HTTPS/SSL, Load-balancer, Web server, Application server, and Database.
+
+## 1. DNS Request
+The journey begins with the browser needing to resolve the domain name `www.google.com` to an IP address. This is handled by the **Domain Name System (DNS)**:
+
+- The browser checks its cache for the IP address of `www.google.com`. If not found, it queries the operating system’s cache.
+- If the address isn’t cached, the request goes to a **DNS resolver** (often provided by your ISP or a public service like Google’s 8.8.8.8).
+- The resolver queries a series of DNS servers:
+  - **Root servers** direct it to the `.com` top-level domain (TLD) server.
+  - The `.com` TLD server points to Google’s authoritative name servers.
+  - Google’s name servers return the IP address (e.g., `142.250.190.14`) for `www.google.com`.
+- The IP address is cached for future use, and the browser now knows where to send the request.
+
+## 2. TCP/IP
+With the IP address in hand, the browser establishes a connection to Google’s server using **TCP/IP** (Transmission Control Protocol/Internet Protocol):
+
+- **IP** handles addressing and routing packets from your device to Google’s server.
+- **TCP** ensures reliable communication by establishing a connection through a three-way handshake:
+  1. Your device sends a SYN (synchronize) packet to the server.
+  2. The server responds with a SYN-ACK (synchronize-acknowledge).
+  3. Your device sends an ACK (acknowledge), completing the connection.
+- The browser sends an HTTP request (e.g., GET) to the server’s IP address on port 443 (used for HTTPS).
+
+## 3. Firewall
+Before reaching Google’s infrastructure, the request may pass through a **firewall**:
+
+- Firewalls act as gatekeepers, filtering traffic based on rules to protect against unauthorized access or malicious attacks.
+- Your network (e.g., home or corporate) and Google’s infrastructure likely have firewalls. Google’s firewall ensures only legitimate traffic (e.g., HTTP/HTTPS on port 443) reaches its servers.
+- If the request passes the firewall checks, it proceeds to the next step.
+
+## 4. HTTPS/SSL
+Since the URL starts with `https://`, the connection is secured using **HTTPS** (Hypertext Transfer Protocol Secure) and **SSL/TLS** (Secure Sockets Layer/Transport Layer Security):
+
+- The browser initiates a **TLS handshake** with Google’s server:
+  - The server sends its SSL certificate, which includes its public key and is signed by a trusted Certificate Authority (CA).
+  - The browser verifies the certificate with the CA to ensure it’s valid and belongs to `www.google.com`.
+  - A session key is negotiated for encrypting data between the browser and server.
+- All subsequent communication (e.g., the HTTP request and response) is encrypted, ensuring privacy and security.
+
+## 5. Load Balancer
+Google’s infrastructure handles millions of requests per second, so a **load balancer** distributes incoming traffic across multiple servers:
+
+- The request arrives at a load balancer (e.g., Google’s Global Load Balancing system), which uses algorithms like round-robin or least connections to select a server.
+- The load balancer ensures no single server is overwhelmed, improving performance and reliability.
+- It forwards the request to a web server in one of Google’s data centers.
+
+## 6. Web Server
+The selected **web server** (e.g., running Nginx or Google’s custom software) receives the request:
+
+- The web server handles the HTTP request, parsing headers and determining what content is needed (e.g., Google’s homepage).
+- For static content (e.g., images, CSS), the web server may serve it directly from a cache.
+- For dynamic content (e.g., search results page), the web server forwards the request to an **application server**.
+
+## 7. Application Server
+The **application server** generates the dynamic content for the request:
+
+- It runs Google’s application logic, processing the request (e.g., interpreting a search query).
+- The application server may need to fetch data, such as search index information or user preferences, by querying a **database**.
+- It generates an HTML page (or JSON for AJAX requests) and sends it back to the web server.
+
+## 8. Database
+The **database** stores and retrieves data needed by the application server:
+
+- Google uses distributed databases (e.g., Spanner or Bigtable) to store vast amounts of data, such as search indices or user profiles.
+- The application server sends queries to the database, which returns the necessary data.
+- The database operates with high availability, often using replication to ensure data is accessible even if some servers fail.
+
+## Final Steps
+- The application server sends the generated content (e.g., HTML for Google’s homepage) back to the web server.
+- The web server packages the response (e.g., HTTP 200 OK with HTML) and sends it to the browser via the load balancer, through the firewall, over the encrypted HTTPS connection.
+- The browser receives the response, parses the HTML, renders the page, and may make additional requests for resources (e.g., images, JavaScript).
+- You see Google’s homepage displayed in your browser!
+
+## Conclusion
+Typing `https://www.google.com` and pressing Enter triggers a sophisticated interplay of DNS, TCP/IP, firewalls, HTTPS/SSL, load balancers, web servers, application servers, and databases. Each component plays a critical role in delivering a fast, secure, and reliable web experience. Understanding this process is key for any Full-Stack or Site Reliability Engineer, as it highlights the complexity and coordination behind a simple web request.

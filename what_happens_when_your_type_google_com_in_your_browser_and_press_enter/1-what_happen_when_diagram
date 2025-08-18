@@ -1,0 +1,13 @@
+[Browser] --> [DNS Servers] --> [IP: 142.250.190.14:443]
+| (TCP/IP, HTTPS/SSL)
+v
+[Firewall] --> [Load Balancer]
+|              |
+v              v
+[Web Server] --> [Application Server] --> [Database]
+|              |
+v              v
+[Response] <-- [Web Server] <-- [Application Server]
+|
+v
+[Browser]

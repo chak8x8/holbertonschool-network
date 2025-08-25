@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="datepicker.min.css">
+</head>
+<body>
+    <script src="datepicker.min.js"></script>
+    <header><h1>Sign Up</h1></header>
+    <main>
+        <div>
+            <form class="basic-info" aria-label="Basic-info">
+                <div class="section-title">
+                    <div class="green-dot"></div>
+                    <h2>Your basic info</h2>
+                </div>
+                
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name"/>
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name"/>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email"/>
+
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username"/>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password"/>
+
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password" id="confirm_password">
+
+                <div class="section-title">
+                    <div class="green-dot"></div>
+                    <h2>Other details</h2>
+                </div>
+                
+                <label for="birth_date">Birth Date:</label>
+                <input type="date" name="birth_date" id="birth_date"/>
+
+                <div>
+                    <label for="gender">Gender:</label>
+                    <label><input type="radio" name="gender" value="male"> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                    <label><input type="radio" name="gender" value="other"> Other</label>
+                </div>
+
+                <label for="about_me">About Me:</label>
+                <textarea name="about_me" id="about_me"></textarea>
+
+                <label for="choose_your_profession">Choose Your Profession:</label>
+                <select id="choose_your_profession" name="profession">
+                    <option value="WebDevelopment">Web Development</option>
+                    <option value="DataAnalytics">Data Analytics</option>
+                    <option value="UXDesign">UI/UX Design</option>
+                </select>
+
+                <div class="term">
+                    <input type="checkbox" id="terms" class="terms"/>
+                    <label for="terms">I'm accepting Terms and Conditions</label>
+                </div>
+                
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

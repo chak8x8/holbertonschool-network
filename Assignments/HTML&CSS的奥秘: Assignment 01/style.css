@@ -1,0 +1,199 @@
+/* ============ 1) Base & Variables ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f0f0f0;          /* page + form background (light grey) */
+  --field-bg: #e0e0e0;    /* input/select/textarea darker grey */
+  --text: #222;
+  --muted: #666;
+  --border: #999;
+  --radius: 8px;
+  --gap: 16px;
+  --accent: #1a8f3a;      /* button + dot */
+  --accent-dark: #126a2b;
+  --focus: #2a7bf6;       /* keyboard focus ring */
+  --shadow: 0 4px 10px rgba(0,0,0,.06);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.45;
+}
+
+/* Keep an even horizontal gutter on all screens */
+main {
+  padding-inline: 16px;        /* equal left/right */
+}
+
+header h1 {
+  text-align: center;
+  margin: 24px 0;
+  font-weight: 800;            /* <-- font weight example */
+}
+
+/* ============ 2) Form Container ============ */
+form.basic-info {
+  background: var(--bg);       /* same as page (your request) */
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ============ 3) Section titles (dot + h2 on one row) ============ */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;            /* space before each section */
+  padding-top: 2px;            /* prevents margin-collapsing */
+}
+
+.section-title:first-of-type {
+  margin-top: 0;               /* no extra gap on the first section */
+}
+
+.green-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex: 0 0 12px;
+}
+
+.section-title h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Optional spacer you can drop in before "Other details" if needed */
+.form-spacer { height: 16px; }
+
+/* ============ 4) Labels & Fields ============ */
+label {
+  display: block;              /* label on its own line */
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--field-bg); /* darker grey fields */
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* Placeholders (if you use them) */
+::placeholder {
+  color: var(--muted);
+}
+
+/* Textarea sizing */
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Improve Select consistency across browsers */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--field-bg);
+  background-image: none; /* keep super simple; add a custom arrow later if you want */
+}
+
+/* Date inputs also pick up the darker bg; keep native picker */
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: textfield;
+  background: var(--field-bg);
+}
+
+/* Focus states for keyboard accessibility */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ============ 5) Radios, Checkboxes, Terms Row ============ */
+/* Gender radios in a neat row */
+.gender-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 8px;
+}
+
+.gender-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;  /* cancel block label margins inside the row */
+  font-weight: 500;
+}
+
+.gender-row input[type="radio"] { width: auto; }
+
+/* Terms (checkbox + text) on the same row */
+.term {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+.term input[type="checkbox"] { width: auto; }
+
+/* ============ 6) Submit Button ============ */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+  margin-top: 8px;
+}
+
+button[type="submit"]:hover {
+  background: var(--accent-dark);
+}
+
+/* ============ 7) Small screens niceties ============ */
+@media (max-width: 380px) {
+  form.basic-info { padding: 18px; }
+  .section-title h2 { font-size: 1rem; }
+}
